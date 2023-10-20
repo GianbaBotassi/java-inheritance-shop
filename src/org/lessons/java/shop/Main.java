@@ -7,9 +7,8 @@ public class Main {
        Prodotto prod3 = new Prodotto("Formaggio", "Stagionato", 1.50, 22);
 
         System.out.println(prod1.getCodice());
-        System.out.println(prod1.getPrezzo());
-        System.out.println(prod1.prezzoConIva());
-        System.out.println(prod1.prezzoFormattatoConIva());
-        System.out.println(prod1.nomeProdotto());
+        System.out.println(prod2.getCodice());
+        System.out.println(prod3.getCodice());
+
     }
 }

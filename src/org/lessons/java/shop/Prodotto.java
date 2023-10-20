@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Prodotto {
 
-    private int codice = randCode();
+    private final String codice = randCode();
     private String nome;
     private String descrizione;
     private double prezzo;
@@ -39,7 +39,7 @@ public class Prodotto {
 
 //    GETTER and SETTER
 
-    public int getCodice(){
+    public String getCodice(){
         return codice;
     }
     public String getNome(){
@@ -72,10 +72,25 @@ public class Prodotto {
         this.iva = iva;
     }
 // Side  metodi
-    private int randCode(){
+    private String randCode(){
         Random randomNum = new Random();
 
-        return randomNum.nextInt(1,99999999);
+        int codice = randomNum.nextInt(1,1000000000);
+
+        String codFormattato = String.format("%d", codice);
+
+        while(codFormattato.length() < 8){
+            codFormattato = "0" + codFormattato;
+        }
+
+//        Con StringBuilder
+//        StringBuilder codFormattato = new StringBuilder(String.format("%d", codice));
+//
+//        while(codFormattato.length() < 8){
+//            codFormattato.insert(0, "0");
+//        }
+
+        return codFormattato.toString();
     }
 
 }
