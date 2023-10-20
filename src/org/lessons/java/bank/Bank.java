@@ -27,13 +27,13 @@ public class Bank {
 
             if (digit == 1) {
                 System.out.println("Inserisci la cifra che vuoi versare sul tuo conto.");
-                double sommaDaVersare = scanner.nextInt();
+                double sommaDaVersare = scanner.nextDouble();
                 scanner.nextLine();
                 conto1.versamentoConto(sommaDaVersare);
                 System.out.printf("Il tuo saldo è pari a %s€.%n", conto1.saldoFormattato());
             } else if (digit == 2) {
                 System.out.println("Inserisci la cifra che vuoi prelevare dal tuo conto.");
-                double sommaDaPrelevare = scanner.nextInt();
+                double sommaDaPrelevare = scanner.nextDouble();
                 scanner.nextLine();
                 conto1.prelievoConto(sommaDaPrelevare);
                 System.out.printf("Il tuo saldo è pari a %s€.%n", conto1.saldoFormattato());
