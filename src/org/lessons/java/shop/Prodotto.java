@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Prodotto {
-
+    private static int counter = 0;
     private final String codice = randCode();
     private String nome;
     private String descrizione;
@@ -12,44 +12,64 @@ public class Prodotto {
     private int iva;
 
 
-    public Prodotto(String nome,String descrizione,double prezzo,int iva){
+    public Prodotto(String nome, String descrizione, double prezzo, int iva) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
         this.iva = iva;
+        counter++;
     }
 
-//    METODI
-    public double prezzoConIva(){
+    //    METODI
+    public double prezzoConIva() {
 
         return prezzo * (100 + iva);
-
     }
-    public String prezzoFormattatoConIva(){
+
+    public int getCounter(){
+        return counter;
+    }
+
+    @Override
+    public String toString() {
+        return "Prodotto{" +
+                "codice='" + codice + '\'' +
+                ", nome='" + nome + '\'' +
+                ", descrizione='" + descrizione + '\'' +
+                ", prezzo=" + prezzo +
+                ", iva=" + iva +
+                '}';
+    }
+
+    public String prezzoFormattatoConIva() {
         DecimalFormat format = new DecimalFormat("#.##");
 
         double prezzoIvato = prezzoConIva();
 
         return format.format(prezzoIvato);
     }
-    public String nomeProdotto(){
+
+    public String nomeProdotto() {
         return codice + "-" + nome;
     }
 
 
 //    GETTER and SETTER
 
-    public String getCodice(){
+    public String getCodice() {
         return codice;
     }
-    public String getNome(){
+
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome){
+    public void setNome(String nome) {
         this.nome = nome;
 
-    }public String getDescrizione(){
+    }
+
+    public String getDescrizione() {
         return descrizione;
     }
 
@@ -57,29 +77,32 @@ public class Prodotto {
         this.descrizione = Prodotto.this.descrizione;
     }
 
-    public double getPrezzo(){
+    public double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(double prezzo){
+    public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
 
-    }public int getIva(){
+    }
+
+    public int getIva() {
         return iva;
     }
 
-    public void setIva(int iva){
+    public void setIva(int iva) {
         this.iva = iva;
     }
-// Side  metodi
-    private String randCode(){
+
+    // Side  metodi
+    private String randCode() {
         Random randomNum = new Random();
 
-        int codice = randomNum.nextInt(1,1000000000);
+        int codice = randomNum.nextInt(1, 1000000000);
 
         String codFormattato = String.format("%d", codice);
 
-        while(codFormattato.length() < 8){
+        while (codFormattato.length() < 8) {
             codFormattato = "0" + codFormattato;
         }
 
