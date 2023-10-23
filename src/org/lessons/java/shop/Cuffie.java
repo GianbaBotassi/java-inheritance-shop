@@ -24,6 +24,14 @@ public class Cuffie extends Prodotto{
                 '}';
     }
 
+    @Override
+    public double scontoFedelta() {
+        if(!isWireless){
+            return prezzoConIva() - (prezzoConIva() * 0.07);
+        }
+        return super.scontoFedelta();
+    }
+
     //Getters and Setters
     public String getColore() {
         return colore;

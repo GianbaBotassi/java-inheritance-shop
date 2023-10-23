@@ -25,6 +25,14 @@ public class Tv extends Prodotto{
                 '}';
     }
 
+    @Override
+    public double scontoFedelta() {
+        if(!isSmart){
+            return prezzoConIva() - (prezzoConIva() * 0.10);
+        }
+        return super.scontoFedelta();
+    }
+
     //Getters and setters
     public int getDimension() {
         return dimension;

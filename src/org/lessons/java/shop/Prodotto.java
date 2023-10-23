@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Prodotto {
-    private static int counter = 0;
     private final String codice = randCode();
     private String nome;
     private String descrizione;
@@ -17,18 +16,24 @@ public class Prodotto {
         this.descrizione = descrizione;
         this.prezzo = prezzo;
         this.iva = iva;
-        counter++;
     }
 
     //    METODI
     public double prezzoConIva() {
 
-        return prezzo * (100 + iva);
+        return prezzo + ((prezzo *  iva)/ 100);
+    }
+    public String prezzoFormattatoConIva() {
+        DecimalFormat format = new DecimalFormat("#.##");
+
+        double prezzoIvato = prezzoConIva();
+
+        return format.format(prezzoIvato);
+    }
+    public double scontoFedelta() {
+        return prezzoConIva() - (prezzoConIva() * 0.02);
     }
 
-    public int getCounter(){
-        return counter;
-    }
 
     @Override
     public String toString() {
@@ -41,13 +46,7 @@ public class Prodotto {
                 '}';
     }
 
-    public String prezzoFormattatoConIva() {
-        DecimalFormat format = new DecimalFormat("#.##");
 
-        double prezzoIvato = prezzoConIva();
-
-        return format.format(prezzoIvato);
-    }
 
     public String nomeProdotto() {
         return codice + "-" + nome;
@@ -66,7 +65,6 @@ public class Prodotto {
 
     public void setNome(String nome) {
         this.nome = nome;
-
     }
 
     public String getDescrizione() {

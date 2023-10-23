@@ -26,7 +26,13 @@ public class Smartphone extends Prodotto{
                 '}';
     }
 
-
+    @Override
+    public double scontoFedelta() {
+        if(phoneMemory < 32){
+            return prezzoConIva() - (prezzoConIva() * 0.05);
+        }
+        return super.scontoFedelta();
+    }
     //Getters and Setters
 
     public String getImeiCode() {
@@ -45,6 +51,6 @@ public class Smartphone extends Prodotto{
 
     private String imeiGenerator(){
         Random randImei = new Random();
-        return String.format("%3d",randImei.nextInt(1,200));
+        return String.format("%015d",randImei.nextInt(1000,9999999));
     }
 }
